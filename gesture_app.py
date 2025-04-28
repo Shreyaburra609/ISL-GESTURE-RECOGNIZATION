@@ -122,8 +122,6 @@ def webcam_recognition():
     global current_gesture
     cap = cv2.VideoCapture(0)
     pygame.mixer.init()
-
-    
     
     while True:
         ret, frame = cap.read()
@@ -233,5 +231,9 @@ def delete_gesture():
             return "Gesture not found."
     return render_template('delete_gesture.html')
 
+# ✅✅✅ --- ADD THIS BELOW ---
 if __name__ == '__main__':
-    app.run(debug=True)
+    import os
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
+# ✅✅✅ --- PORT BINDING FIX DONE ---
